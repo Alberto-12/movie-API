@@ -130,6 +130,116 @@ app.use((err, req, res, next) => {
           "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_UX182_CR0,0,182,268_AL_.jpg",
         Featured: true,
       },
+      {
+        id: 6,
+        Title: "2001: A Space Odyssey",
+        Description:
+          "After discovering a mysterious artifact buried beneath the Lunar surface, mankind sets off on a quest to find its origins with help from intelligent supercomputer H.A.L. 9000.",
+        Genre: {
+          Name: "Sci-fi",
+          Description:
+            "Science fiction, abbreviation SF or sci-fi, a form of fiction that deals principally with the impact of actual or imagined science upon society or individuals.",
+        },
+        Director: {
+          Name: "Stanley Kubrick",
+          Bio:
+            "Stanley Kubrick was born in Manhattan, New York City, to Sadie Gertrude (Perveler) and Jacob Leonard Kubrick, a physician. His family were Jewish immigrants (from Austria, Romania, and Russia). Stanley was considered intelligent, despite poor grades at school. Hoping that a change of scenery would produce better academic performance, Kubrick's ... See full bio",
+          Birth: "1928",
+          Death: "",
+        },
+    
+        ImagePath:
+          "https://m.media-amazon.com/images/M/MV5BMmNlYzRiNDctZWNhMi00MzI4LThkZTctMTUzMmZkMmFmNThmXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UX182_CR0,0,182,268_AL_.jpg",
+        Featured: true,
+      },
+      {
+        id: 7,
+        Title: "The Thing",
+        Description:
+          "A research team in Antarctica is hunted by a shape-shifting alien that assumes the appearance of its victims.",
+        Genre: {
+          Name: "Horror",
+          Description:
+            "A horror film is one that seeks to elicit fear in its audience for entertainment purposes. Horror films additionally aim to evoke viewers' nightmares, fears, revulsions and terror of the unknown and macabre. ... Horror may also overlap with the fantasy, supernatural fiction, and thriller genres.",
+        },
+        Director: {
+          Name: "John Carpenter",
+          Bio:
+            "John Howard Carpenter was born in Carthage, New York, to mother Milton Jean (Carter) and father Howard Ralph Carpenter. His family moved to Bowling Green, Kentucky, where his father, a professor, was head of the music department at Western Kentucky University. He attended Western Kentucky University and then USC film school in Los Angeles. He began... See full bio",
+          Birth: "1948",
+          Death: "",
+        },
+    
+        ImagePath:
+          "https://m.media-amazon.com/images/M/MV5BNGViZWZmM2EtNGYzZi00ZDAyLTk3ODMtNzIyZTBjN2Y1NmM1XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_UX182_CR0,0,182,268_AL_.jpg",
+        Featured: true,
+      },
+      {
+        id: 8,
+        Title: "Rosemary's Baby",
+        Description:
+          "A young couple trying for a baby move into a fancy apartment surrounded by peculiar neighbors.",
+        Genre: {
+          Name: "Drama",
+          Description:
+            "Drama: The drama genre features stories with high stakes and a lot of conflicts. They're plot-driven and demand that every character and scene move the story forward. Dramas follow a clearly defined narrative plot structure, portraying real-life scenarios or extreme situations with emotionally-driven characters.",
+        },
+        Director: {
+          Name: "Roman Polanski",
+          Bio:
+            "Roman Polanski is a Polish film director, producer, writer and actor. Having made films in Poland, Britain, France and the USA, he is considered one of the few truly international filmmakers. Roman Polanski was born in Paris in 1933. His parents returned to Poland from France in 1936, three years before World War II began. On Germany's invasion in ... See full bio",
+          Birth: "1933",
+          Death: "",
+        },
+    
+        ImagePath:
+          "https://m.media-amazon.com/images/M/MV5BZmEwZGU2NzctYzlmNi00MGJkLWE3N2MtYjBlN2ZhMGJkZTZiXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UX182_CR0,0,182,268_AL_.jpg",
+        Featured: true,
+      },
+      {
+        id: 9,
+        Title: "Eyes Wide Shut",
+        Description:
+          "A New York City doctor embarks on a harrowing, night-long odyssey of sexual and moral discovery after his wife reveals a painful secret to him.",
+        Genre: {
+          Name: "Thriller",
+          Description:
+            "Thriller is a genre of fiction, having numerous, often overlapping subgenres. Thrillers are characterized and defined by the moods they elicit, giving viewers heightened feelings of suspense, excitement, surprise, anticipation and anxiety.",
+        },
+        Director: {
+          Name: "Stanley Kubrick",
+          Bio:
+            "Stanley Kubrick was born in Manhattan, New York City, to Sadie Gertrude (Perveler) and Jacob Leonard Kubrick, a physician. His family were Jewish immigrants (from Austria, Romania, and Russia). Stanley was considered intelligent, despite poor grades at school. Hoping that a change of scenery would produce better academic performance, Kubrick's ... See full bio",
+          Birth: "1928",
+          Death: "",
+        },
+    
+        ImagePath:
+          "https://m.media-amazon.com/images/M/MV5BMjA5NTUwNjI1N15BMl5BanBnXkFtZTYwOTE1ODc5._V1_UX182_CR0,0,182,268_AL_.jpg",
+        Featured: true,
+      },
+      {
+        id: 10,
+        Title: "The Tenant",
+        Description:
+          "A bureaucrat rents a Paris apartment where he finds himself drawn into a rabbit hole of dangerous paranoia.",
+        Genre: {
+          Name: "Thriller",
+          Description:
+            "Thriller is a genre of fiction, having numerous, often overlapping subgenres. Thrillers are characterized and defined by the moods they elicit, giving viewers heightened feelings of suspense, excitement, surprise, anticipation and anxiety.",
+        },
+        Director: {
+          Name: "Roman Polanski",
+          Bio:
+            "Roman Polanski is a Polish film director, producer, writer and actor. Having made films in Poland, Britain, France and the USA, he is considered one of the few truly international filmmakers. Roman Polanski was born in Paris in 1933. His parents returned to Poland from France in 1936, three years before World War II began. On Germany's invasion in ... See full bio",
+          Birth: "1933",
+          Death: "",
+        },
+    
+        ImagePath:
+          "https://m.media-amazon.com/images/M/MV5BYmVhMDQ1YWUtYjgxOS00NzYyLWI0ZGItNTg3ZjM0MmQ4NmIwXkEyXkFqcGdeQXVyMjQzMzQzODY@._V1_UY268_CR10,0,182,268_AL_.jpg",
+        Featured: true,
+      },
   ];
 
 // GET requests
@@ -144,8 +254,8 @@ app.get('/documentation', (req, res) => {
   res.sendFile('public/documentation.html', { root: __dirname });
 });
 
-app.get('/books', (req, res) => {
-  res.json(topBooks);
+app.get('/movies', (req, res) => {
+  res.json(movies);
 });
 
 
