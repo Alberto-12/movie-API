@@ -2,7 +2,7 @@ const express = require('express'),
   morgan = require('morgan');
 
 const app = express();
-
+app.use(express.static('public'));
 app.use(morgan('common'));
 const bodyParser = require('body-parser'),
   methodOverride = require('method-override');
