@@ -1,12 +1,142 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="/css/styles.css"
+    />
+    <title>Documentation Page</title>
 </head>
 <body>
-    <h1>this is documentation page</h1>
-    
+    <h1>Documentation Page</h1>
+    <p>This web application will provide users with access to information
+        about different movies, actors, directors, and genres. Users will be
+        able to sign up, update their personal information, and create a
+        list of their favorite movies.</p>
+    <table class="doc-table">
+        <tr>
+            <th>Business Logic</th>
+            <th>URL Endpoint</th>
+            <th>HTTP Method</th>
+            <th>Request body data format</th>
+            <th>Response body data format</th>
+        </tr>
+        <tr>
+            <td>Get a list of all movies</td>
+            <td>/movies</td>
+            <td>GET</td>
+            <td>None</td>
+            <td>A JSON object holding data about all movies. <br>Example:<br>{<br>
+                "_id" : ObjectId("5fce7ca9066549452ff7a10e"),<br>
+                "Title" : "Alien",<br>
+                "Description" : "Short description of movie.",<br>
+                "Genre" : {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"Name" : "Horror",<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"Description" : "Short description of genre."<br>
+                    &nbsp;&nbsp;},<br>
+                "Director" : {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"Name" : "Ridley Scott",<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"Bio" : "Short bio about director.",<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"Birth" : "1937"<br>
+                    &nbsp;&nbsp;},<br>
+                "ImagePath" : "link to image",<br>
+                "Featured" : true<br>
+            },
+            <br>{<br>
+                "_id" : ObjectId("5fce7b1a066549452ff7a10b"),<br>
+                "Title" : "Knives Out",<br>
+                "Description" : "Short description of movie.",<br>
+                "Genre" : {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"Name" : "Drama",<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"Description" : "Short description of genre."<br>
+                    &nbsp;&nbsp;},<br>
+                "Director" : {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"Name" : "Rian Johnson",<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"Bio" : "Short bio about director.",<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"Birth" : "1973"<br>
+                    &nbsp;&nbsp;},<br>
+                "ImagePath" : "link to image",<br>
+                "Featured" : true<br>
+            }</td>
+        </tr>
+        <tr>
+            <td>Get data about a single movie by title</td>
+            <td>/movies/:Title</td>
+            <td>GET</td>
+            <td>None</td>
+            <td>A JSON object holding data about a single movie, containing a description, genre, director, and image URL.<br>Example:<br>{<br>
+                "_id" : ObjectId("5fce6c3f6f4a70ea53293d7d"),<br>
+                "Title" : "Get Out",<br>
+                "Description" : "Short description of movie.",<br>
+                "Genre" : {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"Name" : "Thriller",<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"Description" : "Short description of genre."<br>
+                    &nbsp;&nbsp;},<br>
+                "Director" : {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"Name" : "Jordan Peele",<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"Bio" : "Short bio about director.",<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"Birth" : "1979"<br>
+                    &nbsp;&nbsp;},<br>
+                "ImagePath" : "link to image",<br>
+                "Featured" : true<br>
+            }</td>
+        </tr>
+        <tr>
+            <td>Get data about a genre by name/title</td>
+            <td>/movies/genres/:Name</td>
+            <td>GET</td>
+            <td>None</td>
+            <td>A text message describing the genre of the movie.<br>Example: "Horror films seek to elicit fear in its audience for entertainment purposes.  They aim to evoke nightmares, fears, revulsions, and terror of the unknown and macabre."</td>
+        </tr>
+        <tr>
+            <td>Get data about a director by name</td>
+            <td>/movies/directors/:Name</td>
+            <td>GET</td>
+            <td>None</td>
+            <td>A JSON object holding data about a director, containing a bio, birth year, and death year(if applicable).<br>Example:<br>{<br>"Director" : {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"Name" : "Jordan Peele",<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"Bio" : "Short bio about director.",<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"Birth" : "1979"<br>
+                &nbsp;&nbsp;}<br>}</td>
+        </tr>
+        <tr>
+            <td>Allow new users to register</td>
+            <td>/users</td>
+            <td>POST</td>
+            <td>A JSON object holding data about the user, containing a username, password, email, and date of birth. <br> Example: <br>{<br>Username: "Rachael Rigby", <br> Password: "abcd1234!", <br> Email: "rrachaelar@gmail.com", <br> Birthday: "08/31/1993"<br>}</td>
+            <td>A JSON object holding data about the user that was added.<br> Example: <br>{<br>Username: "Rachael Rigby", <br> Password: "abcd1234!", <br> Email: "rrachaelar@gmail.com", <br> Birthday: "08/31/1993"<br>}</td>
+        </tr>
+        <tr>
+            <td>Allow users to update their user info</td>
+            <td>/users/:Username</td>
+            <td>PUT</td>
+            <td>A JSON object holding data about the user, containing a username, password, email, and date of birth, including the data to be updated.<br> Example: <br>{<br>Password: "newpassword", <br> Email: "newemail@aol.com",<br>}</td>
+            <td>A text message indicating that the information was updated.<br>Example: "User information updated successfully!"</td>
+        </tr>
+        <tr>
+            <td>Allow users to add a movie to their list of favorites</td>
+            <td>/users/:Username/Movies/:MovieID</td>
+            <td>POST</td>
+            <td>None</td>
+            <td>A text message indicating that the movie was added to their list of favorites.<br>Example: "Movie successfully added to list of favorites!"</td>
+        </tr>
+        <tr>
+            <td>Allow users to remove a movie from their list of favorites</td>
+            <td>/users/:Username/Movies/MovieID</td>
+            <td>DELETE</td>
+            <td>None</td>
+            <td>A text message indicating that the movie was removed from their list of favorites.<br>Example: "Movie successfully removed from list of favorites."</td>
+        </tr>
+        <tr>
+            <td>Allow existing users to deregister</td>
+            <td>/users/:Username</td>
+            <td>DELETE</td>
+            <td>None</td>
+            <td>A text message indicating that the user successfully deregistered.<br>Example: "User successfully deregistered."</td>
+        </tr>
+    </table>
 </body>
 </html>
