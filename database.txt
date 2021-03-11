@@ -319,4 +319,6 @@ db.users.update(
 
 db.movies.remove({ "Genre.Name": "Drama" })
 
+mongoexport -d myFlixDB -c movies -o movies.json
 
+mongoexport -d myFlixDB -c users -o users.json
