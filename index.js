@@ -22,19 +22,24 @@ app.use(express.static("public"));
 app.use(morgan("common"));
 app.use(bodyParser.json());
 
+let auth = require('./auth')(app);
+const passport = require('passport');
+require('./passport');
+
+
 
 //List of all movies
 app.get("/", function (req, res) {
   res.send("Welcome to Flix Fix!");
 });
 
-app.get("/movies", function (
+app.get("/movies", passport.authenticate('jwt', {session: false}), function (
   req,
   res
 ) {
   Movies.find()
     .then(function (movies) {
-      res.status(201).json(movies);
+      res.status(200).json(movies);
     })
     .catch(function (err) {
       console.error(err);
@@ -44,12 +49,12 @@ app.get("/movies", function (
 
 //get information about a movie by title
 app.get(
-  "/movies/:Title",
+  "/movies/:Title", passport.authenticate('jwt', {session: false}),
 
   function (req, res) {
     Movies.findOne({ Title: req.params.Title })
       .then(function (movies) {
-        res.json(movies);
+        res.status(200).json(movies);
       })
       .catch(function (err) {
         console.error(err);
@@ -60,12 +65,12 @@ app.get(
 
 //get data about a director
 app.get(
-  "/movies/directors/:Name",
+  "/movies/directors/:Name", passport.authenticate('jwt', {session: false}),
 
   function (req, res) {
     Movies.findOne({ "Director.Name": req.params.Name })
       .then(function (movies) {
-        res.json(movies.Director);
+        res.status(200).json(movies.Director);
       })
       .catch(function (err) {
         console.error(err);
@@ -76,12 +81,12 @@ app.get(
 
 //get data about a genre by name
 app.get(
-  "/movies/genres/:Name",
+  "/movies/genres/:Name", passport.authenticate('jwt', {session: false}),
 
   function (req, res) {
     Movies.findOne({ "Genre.Name": req.params.Name })
       .then(function (movies) {
-        res.json(movies.Genre);
+        res.status(200).json(movies.Genre);
       })
       .catch(function (err) {
         console.error(err);
@@ -92,10 +97,10 @@ app.get(
 
 //user endpoints
 //get a list of users
-app.get("/users", function (req, res) {
+app.get("/users", passport.authenticate('jwt', {session: false}), function (req, res) {
   Users.find()
     .then(function (users) {
-      res.status(201).json(users);
+      res.status(200).json(users);
     })
     .catch(function (err) {
       console.error(err);
@@ -105,12 +110,12 @@ app.get("/users", function (req, res) {
 
 //get a user by username
 app.get(
-  "/users/:Username",
+  "/users/:Username", passport.authenticate('jwt', {session: false}),
 
   function (req, res) {
     Users.findOne({ Username: req.params.Username })
       .then(function (user) {
-        res.json(user);
+        res.status(200).json(user);
       })
       .catch(function (err) {
         console.error(err);
@@ -145,7 +150,7 @@ app.post(
             Birthday: req.body.Birthday,
           })
             .then(function (user) {
-              res.status(201).json(user);
+              res.status(200).json(user);
             })
             .catch(function (error) {
               console.error(error);
@@ -169,7 +174,7 @@ app.post(
   Birthday: Date
 }*/
 app.put(
-  "/users/:Username",
+  "/users/:Username", passport.authenticate('jwt', {session: false}),
 
   (req, res) => {
     Users.findOneAndUpdate(
@@ -196,7 +201,7 @@ app.put(
 
 // Delete a user by username
 app.delete(
-  "/users/:Username",
+  "/users/:Username", passport.authenticate('jwt', {session: false}),
 
   function (req, res) {
     Users.findOneAndRemove({ Username: req.params.Username })
@@ -216,7 +221,7 @@ app.delete(
 
 // Add a movie to a user's list of favorites
 app.post(
-  "/users/:Username/movies/:MovieID",
+  "/users/:Username/movies/:MovieID", passport.authenticate('jwt', {session: false}),
 
   function (req, res) {
     Users.findOneAndUpdate(
@@ -237,7 +242,7 @@ app.post(
 
 //delete movie from user's list of favorites
 app.delete(
-  "/users/:Username/movies/:MovieID",
+  "/users/:Username/movies/:MovieID", passport.authenticate('jwt', {session: false}),
 
   function (req, res) {
     Users.findOneAndUpdate(
