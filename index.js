@@ -4,9 +4,29 @@ const app = express();
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const Models = require("./models.js");
+const { check, validationResult } = require('express-validator');
 
 const Movies = Models.Movie;
 const Users = Models.User;
+
+const cors = require('cors');
+let allowedOrigins = ['http://localhost:8080', '*'];
+
+app.use(cors({
+  origin: (origin, callback) => {
+    if(!origin) return callback(null, true);
+    if(allowedOrigins.indexOf(origin) === -1){ // If a specific origin isn’t found on the list of allowed origins
+      let message = 'The CORS policy for this application doesn’t allow access from origin ' + origin;
+      return callback(new Error(message ), false);
+    }
+    return callback(null, true);
+  }
+}));
+
+
+
+/* rest of code goes here*/
+
 
  mongoose.connect("mongodb://localhost:27017/myFlixDB", {
    useNewUrlParser: true,
@@ -135,8 +155,21 @@ app.get(
 }*/
 app.post(
   "/users",
+  [
+    check('Username', 'Username is required').isLength({min: 5}),
+    check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
+    check('Password', 'Password is required').not().isEmpty(),
+    check('Email', 'Email does not appear to be valid').isEmail()
+  ], 
   function (req, res) {
     // check the validation object for errors
+    let errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      return res.status(422).json({ errors: errors.array() });
+    }
+
+    let hashedPassword = Users.hashPassword(req.body.Password);
     Users.findOne({ Username: req.body.Username }) //Search to see if a user with the requested username already exists
       .then(function (user) {
         if (user) {
@@ -145,7 +178,7 @@ app.post(
         } else {
           Users.create({
             Username: req.body.Username,
-            Password: req.body.Password,
+            Password: hashedPassword ,
             Email: req.body.Email,
             Birthday: req.body.Birthday,
           })
@@ -177,12 +210,13 @@ app.put(
   "/users/:Username", passport.authenticate('jwt', {session: false}),
 
   (req, res) => {
+    let hashedPassword = Users.hashPassword(req.body.Password);
     Users.findOneAndUpdate(
       { Username: req.params.Username },
       {
         $set: {
           Username: req.body.Username,
-          Password: req.body.Password,
+          Password: hashedPassword,
           Email: req.body.Birthday,
         },
       },
