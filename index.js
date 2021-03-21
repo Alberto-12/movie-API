@@ -33,7 +33,7 @@ app.use(cors({
 //    useUnifiedTopology: true,
 //  });
  
- mongoose.connect("mongodb+srv://alberto-serafini:albertserafini@cluster0.ohxzt.mongodb.net/myFlixDB?retryWrites=true&w=majority", {
+ mongoose.connect("mongodb+srv://alberto-serafini:albertoserafini@cluster0.ohxzt.mongodb.net/myFlixDB?retryWrites=true&w=majority", {
    useNewUrlParser: true,
    useUnifiedTopology: true,
  });
