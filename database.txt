@@ -322,3 +322,7 @@ db.movies.remove({ "Genre.Name": "Drama" })
 mongoexport -d myFlixDB -c movies -o movies.json
 
 mongoexport -d myFlixDB -c users -o users.json
+
+mongo "mongodb+srv://cluster0.ohxzt.mongodb.net/myFlixDB" --username alberto-serafini
+
+mongoimport --uri mongodb+srv://alberto-serafini:albertoserafini@cluster0.ohxzt.mongodb.net/myFlixDB --collection users --type json --file users.json 

@@ -28,11 +28,15 @@ app.use(cors({
 /* rest of code goes here*/
 
 
- mongoose.connect("mongodb://localhost:27017/myFlixDB", {
+//  mongoose.connect("mongodb://localhost:27017/myFlixDB", {
+//    useNewUrlParser: true,
+//    useUnifiedTopology: true,
+//  });
+ 
+ mongoose.connect("mongodb+srv://alberto-serafini:albertserafini@cluster0.ohxzt.mongodb.net/myFlixDB?retryWrites=true&w=majority", {
    useNewUrlParser: true,
    useUnifiedTopology: true,
  });
-
 
 //express.static
 //"documentation.html" file from public folder
