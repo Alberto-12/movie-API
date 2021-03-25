@@ -33,7 +33,12 @@ app.use(cors({
 //    useUnifiedTopology: true,
 //  });
  
- mongoose.connect("mongodb+srv://alberto-serafini:albertoserafini@cluster0.ohxzt.mongodb.net/myFlixDB?retryWrites=true&w=majority", {
+//  mongoose.connect("mongodb+srv://alberto-serafini:albertoserafini@cluster0.ohxzt.mongodb.net/myFlixDB?retryWrites=true&w=majority", {
+//    useNewUrlParser: true,
+//    useUnifiedTopology: true,
+//  });
+
+ mongoose.connect(process.env.CONNECTION_URI, {
    useNewUrlParser: true,
    useUnifiedTopology: true,
  });
@@ -121,7 +126,7 @@ app.get(
 
 //user endpoints
 //get a list of users
-app.get("/users", function (req, res) {
+app.get("/users",  function (req, res) {
   Users.find()
     .then(function (users) {
       res.status(200).json(users);
